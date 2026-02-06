@@ -99,7 +99,7 @@ export default function ThreadSummary({
 
             {summary && !isLoading && (
                 <div className="space-y-4">
-                    <div className="bg-black/30 rounded-xl p-4 border border-gray-700">
+                    <div className="bg-black/30 rounded-xl p-4 border border-slate-700">
                         <pre className="text-gray-200 whitespace-pre-wrap text-sm font-sans">
                             {summary}
                         </pre>
@@ -108,7 +108,7 @@ export default function ThreadSummary({
                     <div className="flex items-center gap-3">
                         <button
                             onClick={copyToClipboard}
-                            className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors"
                         >
                             {copied ? (
                                 <>
