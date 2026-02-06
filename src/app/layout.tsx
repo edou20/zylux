@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const bodyFont = Instrument_Sans({
+    subsets: ["latin"],
+    variable: "--font-body",
+    display: "swap",
+});
+
+const displayFont = Space_Grotesk({
+    subsets: ["latin"],
+    variable: "--font-display",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: {
@@ -38,7 +51,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className="flex flex-col min-h-screen">
+            <body className={`${bodyFont.variable} ${displayFont.variable} antialiased`}>
                 <Header />
                 <main className="flex-1">{children}</main>
                 <Footer />

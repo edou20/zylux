@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg: #f6f7f3;
+  --ink: #0d1b1f;
+  --muted: #5b6b73;
+  --line: #d7e0e3;
+  --accent: #10b6a9;
+  --accent-2: #ff7a59;
+  --accent-3: #1b6ef3;
+}
+
+body {
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(16, 182, 169, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 10% 10%, rgba(255, 122, 89, 0.14), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+}
+
+.bg-mesh {
+  background-image:
+    radial-gradient(35% 40% at 10% 10%, rgba(16, 182, 169, 0.22), transparent 70%),
+    radial-gradient(40% 45% at 90% 20%, rgba(27, 110, 243, 0.18), transparent 70%),
+    radial-gradient(45% 45% at 50% 90%, rgba(255, 122, 89, 0.18), transparent 70%);
+}
+
+.bg-noise {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.08"/></svg>');
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+.animate-fade-up-2 {
+  animation: fade-up 0.9s ease-out 0.1s both;
+}
+
+.animate-fade-up-3 {
+  animation: fade-up 1s ease-out 0.2s both;
+}
