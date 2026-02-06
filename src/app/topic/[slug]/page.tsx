@@ -88,7 +88,7 @@ export default async function TopicPage({ params }: { params: { slug: string } }
 
                     <Link
                         href={`/create?topic=${topic.slug}`}
-                        className={`px-5 py-2.5 text-white font-semibold rounded-xl transition text-sm ${isAiTech
+                        className={`px-5 py-2.5 text-white font-semibold rounded-xl transition text-sm hover:-translate-y-0.5 ${isAiTech
                                 ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700'
                                 : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                             }`}
@@ -106,7 +106,7 @@ export default async function TopicPage({ params }: { params: { slug: string } }
                             <p className="text-slate-500 mb-6">Be the first to start a discussion in this topic!</p>
                             <Link
                                 href={`/create?topic=${topic.slug}`}
-                                className={`inline-block px-6 py-3 text-white font-semibold rounded-xl transition ${isAiTech
+                                className={`inline-block px-6 py-3 text-white font-semibold rounded-xl transition hover:-translate-y-0.5 ${isAiTech
                                         ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700'
                                         : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                                     }`}

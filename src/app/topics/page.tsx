@@ -60,7 +60,7 @@ export default async function TopicsPage() {
                             <Link
                                 key={topic.id}
                                 href={`/topic/${topic.slug}`}
-                                className="group relative bg-white/80 rounded-2xl border border-slate-200 p-6 hover:border-teal-300 hover:shadow-xl hover:shadow-teal-100/50 transition-all duration-300"
+                                className="group relative bg-white/80 rounded-2xl border border-slate-200 p-6 hover:border-teal-300 hover:shadow-xl hover:shadow-teal-100/50 transition-all duration-300 card-hover"
                             >
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-teal-100 to-transparent rounded-bl-[100px] rounded-tr-2xl opacity-50" />
 
@@ -108,7 +108,7 @@ export default async function TopicsPage() {
                             <Link
                                 key={topic.id}
                                 href={`/topic/${topic.slug}`}
-                                className="group relative bg-white/80 rounded-2xl border border-slate-200 p-6 hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300"
+                                className="group relative bg-white/80 rounded-2xl border border-slate-200 p-6 hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100/50 transition-all duration-300 card-hover"
                             >
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-100 to-transparent rounded-bl-[100px] rounded-tr-2xl opacity-50" />
 

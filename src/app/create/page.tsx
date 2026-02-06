@@ -190,7 +190,7 @@ export default function CreateThreadPage() {
                         <button
                             type="submit"
                             disabled={isLoading || !selectedTopic || !title.trim() || !content.trim()}
-                            className={`px-8 py-3 text-white font-semibold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed ${isAiTech
+                            className={`px-8 py-3 text-white font-semibold rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed hover:-translate-y-0.5 ${isAiTech
                                     ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700'
                                     : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                                 }`}

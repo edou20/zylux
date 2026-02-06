@@ -158,7 +158,7 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
                                 <button
                                     type="submit"
                                     disabled={isSubmitting || !replyContent.trim()}
-                                    className={`px-4 py-2 text-white text-sm font-semibold rounded-xl disabled:opacity-50 transition ${isAiTech ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700' : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
+                                    className={`px-4 py-2 text-white text-sm font-semibold rounded-xl disabled:opacity-50 transition hover:-translate-y-0.5 ${isAiTech ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700' : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                                         }`}
                                 >
                                     {isSubmitting ? 'Posting...' : 'Reply'}
@@ -200,7 +200,7 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
                     <button
                         type="submit"
                         disabled={isSubmitting || !newComment.trim()}
-                        className={`px-6 py-2.5 text-white font-semibold rounded-xl disabled:opacity-50 transition ${isAiTech ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700' : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
+                        className={`px-6 py-2.5 text-white font-semibold rounded-xl disabled:opacity-50 transition hover:-translate-y-0.5 ${isAiTech ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700' : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                             }`}
                     >
                         {isSubmitting ? 'Posting...' : 'Post Comment'}
