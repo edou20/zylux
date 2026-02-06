@@ -89,10 +89,10 @@ export default function SearchBar() {
                     }}
                     onFocus={() => setIsOpen(true)}
                     placeholder="Search threads & topics..."
-                    className="w-64 px-4 py-2 pl-10 text-sm bg-gray-100 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent focus:bg-white transition"
+                    className="w-64 px-4 py-2 pl-10 text-sm bg-white/80 border border-slate-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent focus:bg-white transition shadow-sm"
                 />
                 <svg
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -102,28 +102,28 @@ export default function SearchBar() {
             </div>
 
             {isOpen && (query.length >= 2 || results.length > 0) && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden z-50">
                     {isLoading ? (
-                        <div className="p-4 text-center text-gray-500 text-sm">Searching...</div>
+                        <div className="p-4 text-center text-slate-500 text-sm">Searching...</div>
                     ) : results.length === 0 ? (
-                        <div className="p-4 text-center text-gray-500 text-sm">No results found</div>
+                        <div className="p-4 text-center text-slate-500 text-sm">No results found</div>
                     ) : (
-                        <div className="divide-y divide-gray-100">
+                        <div className="divide-y divide-slate-100">
                             {results.map((result) => (
                                 <button
                                     key={`${result.type}-${result.id}`}
                                     onClick={() => handleSelect(result)}
-                                    className="w-full px-4 py-3 text-left hover:bg-gray-50 transition flex items-center gap-3"
+                                    className="w-full px-4 py-3 text-left hover:bg-slate-50 transition flex items-center gap-3"
                                 >
                                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm ${result.type === 'topic'
-                                            ? 'bg-purple-100 text-purple-600'
-                                            : 'bg-gray-100 text-gray-600'
+                                            ? 'bg-teal-100 text-teal-700'
+                                            : 'bg-slate-100 text-slate-600'
                                         }`}>
                                         {result.type === 'topic' ? result.icon || '📁' : '💬'}
                                     </div>
                                     <div>
-                                        <p className="text-sm font-medium text-gray-900 line-clamp-1">{result.title}</p>
-                                        <p className="text-xs text-gray-500 capitalize">{result.type}</p>
+                                        <p className="text-sm font-medium text-slate-900 line-clamp-1">{result.title}</p>
+                                        <p className="text-xs text-slate-500 capitalize">{result.type}</p>
                                     </div>
                                 </button>
                             ))}

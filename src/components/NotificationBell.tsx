@@ -105,26 +105,26 @@ export default function NotificationBell() {
         <div ref={bellRef} className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
+                className="relative p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition"
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
                 {unreadCount > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                         {unreadCount > 9 ? '9+' : unreadCount}
                     </span>
                 )}
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden z-50">
-                    <div className="px-4 py-3 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
-                        <h3 className="font-semibold text-gray-900">Notifications</h3>
+                <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden z-50">
+                    <div className="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                        <h3 className="font-semibold text-slate-900">Notifications</h3>
                         {unreadCount > 0 && (
                             <button
                                 onClick={markAllAsRead}
-                                className="text-xs text-purple-600 hover:text-purple-700"
+                                className="text-xs text-teal-700 hover:text-teal-800"
                             >
                                 Mark all read
                             </button>
@@ -133,7 +133,7 @@ export default function NotificationBell() {
 
                     <div className="max-h-96 overflow-y-auto">
                         {notifications.length === 0 ? (
-                            <div className="p-8 text-center text-gray-500 text-sm">
+                            <div className="p-8 text-center text-slate-500 text-sm">
                                 <span className="text-3xl block mb-2">🔔</span>
                                 No notifications yet
                             </div>
@@ -142,20 +142,20 @@ export default function NotificationBell() {
                                 <div
                                     key={notification.id}
                                     onClick={() => markAsRead(notification.id)}
-                                    className={`px-4 py-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition ${!notification.is_read ? 'bg-purple-50' : ''
+                                    className={`px-4 py-3 border-b border-slate-100 hover:bg-slate-50 cursor-pointer transition ${!notification.is_read ? 'bg-teal-50/60' : ''
                                         }`}
                                 >
                                     <div className="flex items-start gap-3">
                                         <span className="text-xl">{getNotificationIcon(notification.type)}</span>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-medium text-gray-900">{notification.title}</p>
+                                            <p className="text-sm font-medium text-slate-900">{notification.title}</p>
                                             {notification.message && (
-                                                <p className="text-xs text-gray-500 line-clamp-2 mt-0.5">{notification.message}</p>
+                                                <p className="text-xs text-slate-500 line-clamp-2 mt-0.5">{notification.message}</p>
                                             )}
-                                            <p className="text-xs text-gray-400 mt-1">{formatTime(notification.created_at)}</p>
+                                            <p className="text-xs text-slate-400 mt-1">{formatTime(notification.created_at)}</p>
                                         </div>
                                         {!notification.is_read && (
-                                            <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5" />
+                                            <div className="w-2 h-2 bg-teal-500 rounded-full mt-1.5" />
                                         )}
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@ export default function NotificationBell() {
 
                     <Link
                         href="/notifications"
-                        className="block px-4 py-3 text-center text-sm text-purple-600 hover:bg-gray-50 border-t border-gray-200"
+                        className="block px-4 py-3 text-center text-sm text-teal-700 hover:bg-slate-50 border-t border-slate-200"
                     >
                         View all notifications
                     </Link>

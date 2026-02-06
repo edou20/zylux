@@ -40,11 +40,11 @@ export default async function TopicPage({ params }: { params: { slug: string } }
     const isAiTech = topic.niche === 'ai_tech'
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             {/* Topic Header */}
             <div className={`${isAiTech
-                ? 'bg-gradient-to-r from-purple-600 to-purple-800'
-                : 'bg-gradient-to-r from-blue-600 to-cyan-600'}`}>
+                ? 'bg-gradient-to-r from-teal-500 to-cyan-600'
+                : 'bg-gradient-to-r from-orange-400 to-amber-500'}`}>
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <div className="flex items-center gap-2 text-white/70 text-sm mb-4">
                         <Link href="/topics" className="hover:text-white transition">Topics</Link>
@@ -57,7 +57,7 @@ export default async function TopicPage({ params }: { params: { slug: string } }
                             {topic.icon}
                         </div>
                         <div>
-                            <h1 className="text-3xl font-bold text-white">{topic.title}</h1>
+                            <h1 className="text-3xl font-display font-semibold text-white">{topic.title}</h1>
                             <p className="text-white/80 mt-1">{topic.description}</p>
                         </div>
                     </div>
@@ -75,22 +75,22 @@ export default async function TopicPage({ params }: { params: { slug: string } }
                 {/* Actions Bar */}
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex gap-3">
-                        <button className="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 hover:border-gray-300 transition text-sm">
+                        <button className="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-teal-300 transition text-sm">
                             Latest
                         </button>
-                        <button className="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 hover:border-gray-300 transition text-sm">
+                        <button className="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-teal-300 transition text-sm">
                             Top
                         </button>
-                        <button className="px-4 py-2 bg-white text-gray-700 font-medium rounded-lg border border-gray-200 hover:border-gray-300 transition text-sm">
+                        <button className="px-4 py-2 bg-white/80 text-slate-700 font-semibold rounded-xl border border-slate-200 hover:border-teal-300 transition text-sm">
                             Unanswered
                         </button>
                     </div>
 
                     <Link
                         href={`/create?topic=${topic.slug}`}
-                        className={`px-5 py-2.5 text-white font-medium rounded-lg transition text-sm ${isAiTech
-                                ? 'bg-purple-600 hover:bg-purple-700'
-                                : 'bg-blue-600 hover:bg-blue-700'
+                        className={`px-5 py-2.5 text-white font-semibold rounded-xl transition text-sm ${isAiTech
+                                ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700'
+                                : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                             }`}
                     >
                         + New Thread
@@ -100,15 +100,15 @@ export default async function TopicPage({ params }: { params: { slug: string } }
                 {/* Threads List */}
                 <div className="space-y-4">
                     {threads.length === 0 ? (
-                        <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+                        <div className="surface p-12 text-center">
                             <div className="text-5xl mb-4">💬</div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">No threads yet</h3>
-                            <p className="text-gray-500 mb-6">Be the first to start a discussion in this topic!</p>
+                            <h3 className="text-xl font-semibold text-slate-900 mb-2">No threads yet</h3>
+                            <p className="text-slate-500 mb-6">Be the first to start a discussion in this topic!</p>
                             <Link
                                 href={`/create?topic=${topic.slug}`}
-                                className={`inline-block px-6 py-3 text-white font-medium rounded-lg transition ${isAiTech
-                                        ? 'bg-purple-600 hover:bg-purple-700'
-                                        : 'bg-blue-600 hover:bg-blue-700'
+                                className={`inline-block px-6 py-3 text-white font-semibold rounded-xl transition ${isAiTech
+                                        ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700'
+                                        : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                                     }`}
                             >
                                 Create Thread

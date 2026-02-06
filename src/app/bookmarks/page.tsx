@@ -35,21 +35,21 @@ export default async function BookmarksPage() {
     const bookmarks = await getBookmarks()
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12">
+        <div className="min-h-screen py-12">
             <div className="max-w-3xl mx-auto px-4">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">Your Bookmarks</h1>
-                <p className="text-gray-600 mb-8">Threads you've saved for later</p>
+                <h1 className="text-3xl font-display font-semibold text-slate-900 mb-2">Your Bookmarks</h1>
+                <p className="text-slate-600 mb-8">Threads you've saved for later</p>
 
                 {bookmarks.length === 0 ? (
-                    <div className="bg-white rounded-2xl border border-gray-200 p-12 text-center">
+                    <div className="surface p-12 text-center">
                         <div className="text-5xl mb-4">🔖</div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">No bookmarks yet</h3>
-                        <p className="text-gray-500 mb-6">
+                        <h3 className="text-xl font-semibold text-slate-900 mb-2">No bookmarks yet</h3>
+                        <p className="text-slate-500 mb-6">
                             Start bookmarking threads to save them for later!
                         </p>
                         <Link
                             href="/topics"
-                            className="inline-block px-6 py-3 bg-purple-600 text-white font-medium rounded-xl hover:bg-purple-700 transition"
+                            className="inline-block px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-lg transition"
                         >
                             Explore Topics
                         </Link>
@@ -60,17 +60,17 @@ export default async function BookmarksPage() {
                             <Link
                                 key={bookmark.id}
                                 href={`/thread/${bookmark.thread.id}`}
-                                className="block bg-white rounded-xl border border-gray-200 p-5 hover:border-purple-300 hover:shadow-md transition"
+                                className="block surface card-hover p-5 hover:border-teal-200"
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl">
+                                    <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center text-2xl">
                                         {bookmark.thread.topic?.icon || '💬'}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-semibold text-gray-900 line-clamp-2">
+                                        <h3 className="font-semibold text-slate-900 line-clamp-2">
                                             {bookmark.thread.title}
                                         </h3>
-                                        <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+                                        <div className="flex items-center gap-2 mt-2 text-sm text-slate-500">
                                             <span>{bookmark.thread.topic?.title}</span>
                                             <span>·</span>
                                             <span>by {bookmark.thread.author?.username || 'Anonymous'}</span>

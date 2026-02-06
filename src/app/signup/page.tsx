@@ -73,21 +73,26 @@ export default function SignupPage() {
 
     if (success) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-                <div className="w-full max-w-md p-8 space-y-6 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 text-center">
-                    <div className="w-16 h-16 mx-auto bg-green-500/20 rounded-full flex items-center justify-center">
-                        <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-mesh" />
+                <div className="absolute inset-0 bg-noise opacity-60" />
+                <div className="absolute -top-16 right-10 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl animate-floaty" />
+                <div className="absolute bottom-10 left-10 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl animate-floaty" />
+
+                <div className="relative w-full max-w-md p-8 space-y-6 bg-white/85 backdrop-blur rounded-3xl shadow-2xl border border-slate-200 text-center">
+                    <div className="w-16 h-16 mx-auto bg-emerald-100 rounded-full flex items-center justify-center">
+                        <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-white">Check your email!</h2>
-                    <p className="text-gray-300">
-                        We've sent a confirmation link to <span className="text-purple-400">{email}</span>.
+                    <h2 className="text-2xl font-display font-semibold text-slate-900">Check your email!</h2>
+                    <p className="text-slate-600">
+                        We've sent a confirmation link to <span className="text-teal-700">{email}</span>.
                         Click the link to verify your account.
                     </p>
                     <Link
                         href="/login"
-                        className="inline-block mt-4 text-purple-400 hover:text-purple-300 font-medium"
+                        className="inline-block mt-4 text-teal-700 hover:text-teal-800 font-semibold"
                     >
                         Back to login
                     </Link>
@@ -97,22 +102,27 @@ export default function SignupPage() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-12">
-            <div className="w-full max-w-md p-8 space-y-8 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20">
+        <div className="min-h-screen flex items-center justify-center relative overflow-hidden py-12">
+            <div className="absolute inset-0 bg-mesh" />
+            <div className="absolute inset-0 bg-noise opacity-60" />
+            <div className="absolute -top-16 right-10 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl animate-floaty" />
+            <div className="absolute bottom-10 left-10 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl animate-floaty" />
+
+            <div className="relative w-full max-w-md p-8 space-y-8 bg-white/85 backdrop-blur rounded-3xl shadow-2xl border border-slate-200">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold text-white mb-2">Create Account</h1>
-                    <p className="text-gray-300">Join the Zylux.ai community</p>
+                    <h1 className="text-4xl font-display font-semibold text-slate-900 mb-2">Create Account</h1>
+                    <p className="text-slate-600">Join the Zylux.ai community</p>
                 </div>
 
                 {error && (
-                    <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-3 rounded-lg">
+                    <div className="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl">
                         {error}
                     </div>
                 )}
 
                 <form onSubmit={handleSignup} className="space-y-5">
                     <div>
-                        <label htmlFor="username" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="username" className="block text-sm font-medium text-slate-700 mb-2">
                             Username
                         </label>
                         <input
@@ -121,13 +131,13 @@ export default function SignupPage() {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                            className="input"
                             placeholder="cooluser123"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                             Email
                         </label>
                         <input
@@ -136,13 +146,13 @@ export default function SignupPage() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                            className="input"
                             placeholder="you@example.com"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
+                        <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-2">
                             Password
                         </label>
                         <input
@@ -152,16 +162,16 @@ export default function SignupPage() {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                             minLength={6}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                            className="input"
                             placeholder="••••••••"
                         />
-                        <p className="mt-1 text-xs text-gray-400">Must be at least 6 characters</p>
+                        <p className="mt-1 text-xs text-slate-500">Must be at least 6 characters</p>
                     </div>
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg transform transition hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        className="w-full btn-primary"
                     >
                         {loading ? 'Creating account...' : 'Create Account'}
                     </button>
@@ -169,17 +179,17 @@ export default function SignupPage() {
 
                 <div className="relative">
                     <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-white/20"></div>
+                        <div className="w-full border-t border-slate-200"></div>
                     </div>
                     <div className="relative flex justify-center text-sm">
-                        <span className="px-4 bg-transparent text-gray-400">Or continue with</span>
+                        <span className="px-4 bg-transparent text-slate-500">Or continue with</span>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                     <button
                         onClick={handleGoogleSignup}
-                        className="flex items-center justify-center gap-2 py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white font-medium transition"
+                        className="flex items-center justify-center gap-2 py-3 px-4 bg-white/80 hover:bg-white border border-slate-200 rounded-xl text-slate-700 font-semibold transition"
                     >
                         <svg className="w-5 h-5" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -191,7 +201,7 @@ export default function SignupPage() {
                     </button>
                     <button
                         onClick={handleGithubSignup}
-                        className="flex items-center justify-center gap-2 py-3 px-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white font-medium transition"
+                        className="flex items-center justify-center gap-2 py-3 px-4 bg-white/80 hover:bg-white border border-slate-200 rounded-xl text-slate-700 font-semibold transition"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
@@ -200,9 +210,9 @@ export default function SignupPage() {
                     </button>
                 </div>
 
-                <p className="text-center text-gray-400">
+                <p className="text-center text-slate-500">
                     Already have an account?{' '}
-                    <Link href="/login" className="text-purple-400 hover:text-purple-300 font-medium">
+                    <Link href="/login" className="text-teal-700 hover:text-teal-800 font-semibold">
                         Sign in
                     </Link>
                 </p>

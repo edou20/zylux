@@ -104,7 +104,7 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
 
     const renderComment = (comment: Comment, isReply = false) => (
         <div key={comment.id} className={`${isReply ? 'ml-12 mt-4' : 'mt-6'}`}>
-            <div className={`flex gap-4 ${isReply ? 'bg-gray-50 rounded-xl p-4' : ''}`}>
+            <div className={`flex gap-4 ${isReply ? 'bg-slate-50 rounded-xl p-4 border border-slate-200/70' : ''}`}>
                 {/* Vote buttons for comments */}
                 <VoteButtons
                     type="comment"
@@ -115,20 +115,20 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
                 <div className="flex-1">
                     {/* Author */}
                     <div className="flex items-center gap-2 mb-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                        <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
                             {comment.author?.username?.charAt(0).toUpperCase() || '?'}
                         </div>
-                        <span className="font-medium text-gray-900 text-sm">
+                        <span className="font-medium text-slate-900 text-sm">
                             {comment.author?.username || 'Anonymous'}
                         </span>
-                        <span className="text-xs text-gray-400">·</span>
-                        <span className="text-xs text-gray-400">{comment.author?.reputation || 0} rep</span>
-                        <span className="text-xs text-gray-400">·</span>
-                        <span className="text-xs text-gray-400">{formatTimeAgo(comment.created_at)}</span>
+                        <span className="text-xs text-slate-400">·</span>
+                        <span className="text-xs text-slate-400">{comment.author?.reputation || 0} rep</span>
+                        <span className="text-xs text-slate-400">·</span>
+                        <span className="text-xs text-slate-400">{formatTimeAgo(comment.created_at)}</span>
                     </div>
 
                     {/* Content */}
-                    <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-wrap">
+                    <p className="text-slate-700 text-sm leading-relaxed whitespace-pre-wrap">
                         {comment.content}
                     </p>
 
@@ -137,7 +137,7 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
                         {!isReply && (
                             <button
                                 onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
-                                className="text-xs text-gray-500 hover:text-purple-600 transition"
+                                className="text-xs text-slate-500 hover:text-teal-700 transition"
                             >
                                 Reply
                             </button>
@@ -152,13 +152,13 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
                                 onChange={(e) => setReplyContent(e.target.value)}
                                 placeholder={`Reply to ${comment.author?.username}...`}
                                 rows={3}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                                className="textarea text-sm"
                             />
                             <div className="flex gap-2 mt-2">
                                 <button
                                     type="submit"
                                     disabled={isSubmitting || !replyContent.trim()}
-                                    className={`px-4 py-2 text-white text-sm font-medium rounded-lg disabled:opacity-50 ${isAiTech ? 'bg-purple-600 hover:bg-purple-700' : 'bg-blue-600 hover:bg-blue-700'
+                                    className={`px-4 py-2 text-white text-sm font-semibold rounded-xl disabled:opacity-50 transition ${isAiTech ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700' : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                                         }`}
                                 >
                                     {isSubmitting ? 'Posting...' : 'Reply'}
@@ -166,7 +166,7 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
                                 <button
                                     type="button"
                                     onClick={() => { setReplyTo(null); setReplyContent('') }}
-                                    className="px-4 py-2 text-gray-500 text-sm hover:text-gray-700"
+                                    className="px-4 py-2 text-slate-500 text-sm hover:text-slate-700"
                                 >
                                     Cancel
                                 </button>
@@ -183,24 +183,24 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
 
     return (
         <div className="mt-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">
+            <h2 className="text-xl font-semibold text-slate-900 mb-6 font-display">
                 Comments ({comments.length})
             </h2>
 
             {/* New comment form */}
-            <form onSubmit={(e) => handleSubmitComment(e)} className="bg-white rounded-xl border border-gray-200 p-4">
+            <form onSubmit={(e) => handleSubmitComment(e)} className="surface p-4">
                 <textarea
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder="Share your thoughts..."
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    className="textarea"
                 />
                 <div className="flex justify-end mt-3">
                     <button
                         type="submit"
                         disabled={isSubmitting || !newComment.trim()}
-                        className={`px-6 py-2.5 text-white font-medium rounded-lg disabled:opacity-50 transition ${isAiTech ? 'bg-purple-600 hover:bg-purple-700' : 'bg-blue-600 hover:bg-blue-700'
+                        className={`px-6 py-2.5 text-white font-semibold rounded-xl disabled:opacity-50 transition ${isAiTech ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700' : 'bg-gradient-to-r from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600'
                             }`}
                     >
                         {isSubmitting ? 'Posting...' : 'Post Comment'}
@@ -209,10 +209,10 @@ export default function CommentSection({ threadId, comments, isAiTech }: Comment
             </form>
 
             {/* Comments list */}
-            <div className="bg-white rounded-xl border border-gray-200 mt-4 p-6">
+            <div className="surface mt-4 p-6">
                 {rootComments.length === 0 ? (
                     <div className="text-center py-8">
-                        <p className="text-gray-500">No comments yet. Be the first to share your thoughts!</p>
+                        <p className="text-slate-500">No comments yet. Be the first to share your thoughts!</p>
                     </div>
                 ) : (
                     rootComments.map(comment => renderComment(comment))

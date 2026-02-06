@@ -79,9 +79,9 @@ export default function VoteButtons({ type, id, initialVotes }: VoteButtonsProps
             <button
                 onClick={() => handleVote(1)}
                 disabled={isLoading}
-                className={`p-2 rounded-lg transition ${userVote === 1
-                        ? 'bg-purple-100 text-purple-600'
-                        : 'hover:bg-gray-100 text-gray-400 hover:text-purple-600'
+                className={`p-2 rounded-xl transition ${userVote === 1
+                        ? 'bg-teal-100 text-teal-700'
+                        : 'hover:bg-teal-50 text-slate-400 hover:text-teal-700'
                     }`}
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ export default function VoteButtons({ type, id, initialVotes }: VoteButtonsProps
                 </svg>
             </button>
 
-            <span className={`text-lg font-semibold ${votes > 0 ? 'text-purple-600' : votes < 0 ? 'text-red-500' : 'text-gray-600'
+            <span className={`text-lg font-semibold ${votes > 0 ? 'text-teal-700' : votes < 0 ? 'text-orange-600' : 'text-slate-600'
                 }`}>
                 {votes}
             </span>
@@ -97,9 +97,9 @@ export default function VoteButtons({ type, id, initialVotes }: VoteButtonsProps
             <button
                 onClick={() => handleVote(-1)}
                 disabled={isLoading}
-                className={`p-2 rounded-lg transition ${userVote === -1
-                        ? 'bg-red-100 text-red-500'
-                        : 'hover:bg-gray-100 text-gray-400 hover:text-red-500'
+                className={`p-2 rounded-xl transition ${userVote === -1
+                        ? 'bg-orange-100 text-orange-600'
+                        : 'hover:bg-orange-50 text-slate-400 hover:text-orange-600'
                     }`}
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

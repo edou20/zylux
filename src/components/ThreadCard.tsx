@@ -32,22 +32,22 @@ export default function ThreadCard({ thread, showTopic = false }: ThreadCardProp
     return (
         <Link
             href={`/thread/${thread.id}`}
-            className="block bg-white rounded-xl border border-gray-200 p-5 hover:border-gray-300 hover:shadow-md transition-all"
+            className="block surface card-hover p-5 hover:border-teal-200"
         >
             <div className="flex gap-4">
                 {/* Vote buttons */}
-                <div className="flex flex-col items-center gap-1 text-gray-400">
+                <div className="flex flex-col items-center gap-1 text-slate-400">
                     <button
-                        className="p-1 hover:text-purple-600 hover:bg-purple-50 rounded transition"
+                        className="p-1 hover:text-teal-700 hover:bg-teal-50 rounded transition"
                         onClick={(e) => { e.preventDefault(); }}
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                         </svg>
                     </button>
-                    <span className="text-sm font-medium text-gray-700">{thread.upvote_count}</span>
+                    <span className="text-sm font-medium text-slate-700">{thread.upvote_count}</span>
                     <button
-                        className="p-1 hover:text-red-500 hover:bg-red-50 rounded transition"
+                        className="p-1 hover:text-orange-600 hover:bg-orange-50 rounded transition"
                         onClick={(e) => { e.preventDefault(); }}
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,26 +60,26 @@ export default function ThreadCard({ thread, showTopic = false }: ThreadCardProp
                 <div className="flex-1 min-w-0">
                     {/* Topic badge */}
                     {showTopic && thread.topic && (
-                        <span className={`inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-2 ${isAiTech
-                                ? 'bg-purple-50 text-purple-600'
-                                : 'bg-blue-50 text-blue-600'
+                        <span className={`inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-2 ${isAiTech
+                                ? 'bg-teal-50 text-teal-700'
+                                : 'bg-orange-50 text-orange-700'
                             }`}>
                             {thread.topic.title}
                         </span>
                     )}
 
                     {/* Title */}
-                    <h3 className="text-lg font-semibold text-gray-900 hover:text-purple-600 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-semibold text-slate-900 hover:text-teal-700 transition-colors line-clamp-2">
                         {thread.title}
                     </h3>
 
                     {/* Preview */}
-                    <p className="mt-1 text-sm text-gray-500 line-clamp-2">
+                    <p className="mt-1 text-sm text-slate-500 line-clamp-2">
                         {thread.content}
                     </p>
 
                     {/* Meta */}
-                    <div className="mt-3 flex items-center gap-4 text-xs text-gray-400">
+                    <div className="mt-3 flex items-center gap-4 text-xs text-slate-400">
                         <span className="flex items-center gap-1">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />

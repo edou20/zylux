@@ -4,6 +4,8 @@ import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import CommentSection from '@/components/CommentSection'
 import VoteButtons from '@/components/VoteButtons'
+import ThreadSummary from '@/components/ThreadSummary'
+import ScriptGenerator from '@/components/ScriptGenerator'
 
 async function getThread(id: string) {
     const supabase = createServerComponentClient({ cookies })
@@ -53,6 +55,12 @@ export default async function ThreadPage({ params }: { params: { id: string } })
     const comments = await getComments(thread.id)
     const isAiTech = thread.topic?.niche === 'ai_tech'
 
+    // Prepare comments for AI components
+    const commentsForAI = comments.map(c => ({
+        author: c.author?.username || 'Anonymous',
+        content: c.content
+    }))
+
     // Increment view count
     const supabase = createServerComponentClient({ cookies })
     await supabase
@@ -61,16 +69,16 @@ export default async function ThreadPage({ params }: { params: { id: string } })
         .eq('id', thread.id)
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             {/* Breadcrumb */}
-            <div className="bg-white border-b border-gray-200">
+            <div className="bg-white/70 backdrop-blur border-b border-slate-200/70">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
                     <div className="flex items-center gap-2 text-sm">
-                        <Link href="/topics" className="text-gray-500 hover:text-gray-700">Topics</Link>
-                        <span className="text-gray-300">/</span>
+                        <Link href="/topics" className="text-slate-500 hover:text-slate-700">Topics</Link>
+                        <span className="text-slate-300">/</span>
                         <Link
                             href={`/topic/${thread.topic?.slug}`}
-                            className={`hover:underline ${isAiTech ? 'text-purple-600' : 'text-blue-600'}`}
+                            className={`hover:underline ${isAiTech ? 'text-teal-700' : 'text-orange-600'}`}
                         >
                             {thread.topic?.title}
                         </Link>
@@ -80,16 +88,16 @@ export default async function ThreadPage({ params }: { params: { id: string } })
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
                 {/* Thread Content */}
-                <article className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                <article className="surface-strong overflow-hidden">
                     {/* Header */}
-                    <div className={`px-6 py-4 ${isAiTech ? 'bg-purple-50 border-b border-purple-100' : 'bg-blue-50 border-b border-blue-100'}`}>
+                    <div className={`px-6 py-4 ${isAiTech ? 'bg-teal-50 border-b border-teal-100' : 'bg-orange-50 border-b border-orange-100'}`}>
                         <div className="flex items-center gap-3">
                             <span className="text-2xl">{thread.topic?.icon}</span>
-                            <span className={`text-sm font-medium ${isAiTech ? 'text-purple-600' : 'text-blue-600'}`}>
+                            <span className={`text-sm font-semibold ${isAiTech ? 'text-teal-700' : 'text-orange-700'}`}>
                                 {thread.topic?.title}
                             </span>
                             {thread.is_pinned && (
-                                <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded-full">
+                                <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">
                                     📌 Pinned
                                 </span>
                             )}
@@ -108,31 +116,31 @@ export default async function ThreadPage({ params }: { params: { id: string } })
 
                             {/* Content */}
                             <div className="flex-1 min-w-0">
-                                <h1 className="text-2xl font-bold text-gray-900 mb-4">
+                                <h1 className="text-2xl font-display font-semibold text-slate-900 mb-4">
                                     {thread.title}
                                 </h1>
 
                                 <div className="prose prose-gray max-w-none">
-                                    <p className="whitespace-pre-wrap text-gray-700 leading-relaxed">
+                                    <p className="whitespace-pre-wrap text-slate-700 leading-relaxed">
                                         {thread.content}
                                     </p>
                                 </div>
 
                                 {/* Author & Meta */}
-                                <div className="mt-6 pt-6 border-t border-gray-100 flex items-center justify-between">
+                                <div className="mt-6 pt-6 border-t border-slate-100 flex items-center justify-between">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white font-medium">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-medium">
                                             {thread.author?.username?.charAt(0).toUpperCase() || '?'}
                                         </div>
                                         <div>
-                                            <p className="font-medium text-gray-900">{thread.author?.username || 'Anonymous'}</p>
-                                            <p className="text-xs text-gray-500">
+                                            <p className="font-medium text-slate-900">{thread.author?.username || 'Anonymous'}</p>
+                                            <p className="text-xs text-slate-500">
                                                 {thread.author?.reputation || 0} rep · {formatDate(thread.created_at)}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                                    <div className="flex items-center gap-4 text-sm text-slate-500">
                                         <span className="flex items-center gap-1">
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -153,6 +161,22 @@ export default async function ThreadPage({ params }: { params: { id: string } })
                     </div>
                 </article>
 
+                {/* AI Features Section */}
+                <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <ThreadSummary
+                        threadId={thread.id}
+                        threadTitle={thread.title}
+                        threadContent={thread.content}
+                        comments={commentsForAI}
+                    />
+                    <ScriptGenerator
+                        threadId={thread.id}
+                        threadTitle={thread.title}
+                        threadContent={thread.content}
+                        comments={commentsForAI}
+                    />
+                </div>
+
                 {/* Comments Section */}
                 <CommentSection
                     threadId={thread.id}
@@ -163,3 +187,4 @@ export default async function ThreadPage({ params }: { params: { id: string } })
         </div>
     )
 }
+

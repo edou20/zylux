@@ -65,9 +65,9 @@ export default function BookmarkButton({ threadId }: BookmarkButtonProps) {
         <button
             onClick={toggleBookmark}
             disabled={isLoading}
-            className={`p-2 rounded-lg transition ${isBookmarked
-                    ? 'bg-amber-100 text-amber-600'
-                    : 'hover:bg-gray-100 text-gray-400 hover:text-amber-600'
+            className={`p-2 rounded-xl transition ${isBookmarked
+                    ? 'bg-amber-100 text-amber-700'
+                    : 'hover:bg-slate-100 text-slate-400 hover:text-amber-600'
                 }`}
             title={isBookmarked ? 'Remove bookmark' : 'Bookmark this thread'}
         >

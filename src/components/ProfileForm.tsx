@@ -47,18 +47,18 @@ export default function ProfileForm({ user, profile }: ProfileFormProps) {
     return (
         <div className="space-y-6">
             {/* Profile Card */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-6">
+            <div className="surface p-6">
                 <div className="flex items-center gap-4 mb-6">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white text-3xl font-bold">
+                    <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-full flex items-center justify-center text-white text-3xl font-bold">
                         {profile?.username?.charAt(0).toUpperCase() || '?'}
                     </div>
                     <div>
-                        <h2 className="text-xl font-bold text-gray-900">@{profile?.username || 'user'}</h2>
-                        <p className="text-gray-500">{user.email}</p>
-                        <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                        <h2 className="text-xl font-semibold text-slate-900">@{profile?.username || 'user'}</h2>
+                        <p className="text-slate-500">{user.email}</p>
+                        <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
                             <span>⭐ {profile?.reputation || 0} reputation</span>
                             {profile?.is_premium && (
-                                <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">
+                                <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-xs font-semibold">
                                     Premium
                                 </span>
                             )}
@@ -69,15 +69,15 @@ export default function ProfileForm({ user, profile }: ProfileFormProps) {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {message && (
                         <div className={`p-4 rounded-lg text-sm ${message.type === 'success'
-                                ? 'bg-green-50 text-green-700 border border-green-200'
-                                : 'bg-red-50 text-red-700 border border-red-200'
+                                ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                : 'bg-rose-50 text-rose-700 border border-rose-200'
                             }`}>
                             {message.text}
                         </div>
                     )}
 
                     <div>
-                        <label htmlFor="displayName" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="displayName" className="block text-sm font-medium text-slate-700 mb-2">
                             Display Name
                         </label>
                         <input
@@ -86,12 +86,12 @@ export default function ProfileForm({ user, profile }: ProfileFormProps) {
                             value={displayName}
                             onChange={(e) => setDisplayName(e.target.value)}
                             placeholder="Your display name"
-                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            className="input"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-2">
+                        <label htmlFor="bio" className="block text-sm font-medium text-slate-700 mb-2">
                             Bio
                         </label>
                         <textarea
@@ -100,14 +100,14 @@ export default function ProfileForm({ user, profile }: ProfileFormProps) {
                             onChange={(e) => setBio(e.target.value)}
                             placeholder="Tell us about yourself..."
                             rows={4}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                            className="textarea"
                         />
                     </div>
 
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg transition disabled:opacity-50"
+                        className="w-full btn-primary"
                     >
                         {isLoading ? 'Saving...' : 'Save Changes'}
                     </button>
@@ -115,37 +115,37 @@ export default function ProfileForm({ user, profile }: ProfileFormProps) {
             </div>
 
             {/* Account Stats */}
-            <div className="bg-white rounded-2xl border border-gray-200 p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Account Stats</h3>
+            <div className="surface p-6">
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">Account Stats</h3>
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-purple-50 rounded-xl text-center">
-                        <div className="text-2xl font-bold text-purple-600">0</div>
-                        <div className="text-sm text-gray-600">Threads</div>
+                    <div className="p-4 bg-teal-50 rounded-xl text-center">
+                        <div className="text-2xl font-bold text-teal-700">0</div>
+                        <div className="text-sm text-slate-600">Threads</div>
                     </div>
-                    <div className="p-4 bg-blue-50 rounded-xl text-center">
-                        <div className="text-2xl font-bold text-blue-600">0</div>
-                        <div className="text-sm text-gray-600">Comments</div>
+                    <div className="p-4 bg-cyan-50 rounded-xl text-center">
+                        <div className="text-2xl font-bold text-cyan-700">0</div>
+                        <div className="text-sm text-slate-600">Comments</div>
                     </div>
-                    <div className="p-4 bg-green-50 rounded-xl text-center">
-                        <div className="text-2xl font-bold text-green-600">{profile?.reputation || 0}</div>
-                        <div className="text-sm text-gray-600">Reputation</div>
+                    <div className="p-4 bg-emerald-50 rounded-xl text-center">
+                        <div className="text-2xl font-bold text-emerald-700">{profile?.reputation || 0}</div>
+                        <div className="text-sm text-slate-600">Reputation</div>
                     </div>
                     <div className="p-4 bg-amber-50 rounded-xl text-center">
-                        <div className="text-2xl font-bold text-amber-600">
+                        <div className="text-2xl font-bold text-amber-700">
                             {new Date(profile?.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                         </div>
-                        <div className="text-sm text-gray-600">Joined</div>
+                        <div className="text-sm text-slate-600">Joined</div>
                     </div>
                 </div>
             </div>
 
             {/* Danger Zone */}
-            <div className="bg-white rounded-2xl border border-red-200 p-6">
-                <h3 className="text-lg font-semibold text-red-600 mb-2">Danger Zone</h3>
-                <p className="text-sm text-gray-600 mb-4">
+            <div className="surface p-6 border border-rose-200">
+                <h3 className="text-lg font-semibold text-rose-600 mb-2">Danger Zone</h3>
+                <p className="text-sm text-slate-600 mb-4">
                     These actions are irreversible. Please proceed with caution.
                 </p>
-                <button className="px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition text-sm">
+                <button className="px-4 py-2 border border-rose-300 text-rose-600 rounded-lg hover:bg-rose-50 transition text-sm">
                     Delete Account
                 </button>
             </div>

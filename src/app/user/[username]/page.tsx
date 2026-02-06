@@ -63,16 +63,16 @@ export default async function UserProfilePage({ params }: { params: { username: 
     const { profile, threads, comments } = data
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             {/* Profile Header */}
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600">
+            <div className="bg-gradient-to-r from-teal-500 to-cyan-600">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
                     <div className="flex items-center gap-6">
                         <div className="w-24 h-24 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-white text-4xl font-bold border-4 border-white/30">
                             {profile.username?.charAt(0).toUpperCase()}
                         </div>
                         <div>
-                            <h1 className="text-3xl font-bold text-white">
+                            <h1 className="text-3xl font-display font-semibold text-white">
                                 {profile.display_name || profile.username}
                             </h1>
                             <p className="text-white/80 text-lg">@{profile.username}</p>
@@ -110,24 +110,24 @@ export default async function UserProfilePage({ params }: { params: { username: 
                 <div className="grid md:grid-cols-3 gap-8">
                     {/* Threads */}
                     <div className="md:col-span-2 space-y-4">
-                        <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Threads</h2>
+                        <h2 className="text-xl font-display font-semibold text-slate-900 mb-4">Recent Threads</h2>
 
                         {threads.length === 0 ? (
-                            <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
-                                <p className="text-gray-500">No threads yet</p>
+                            <div className="surface p-8 text-center">
+                                <p className="text-slate-500">No threads yet</p>
                             </div>
                         ) : (
                             threads.map((thread: any) => (
                                 <Link
                                     key={thread.id}
                                     href={`/thread/${thread.id}`}
-                                    className="block bg-white rounded-xl border border-gray-200 p-5 hover:border-purple-300 hover:shadow-md transition"
+                                    className="block surface card-hover p-5 hover:border-teal-200"
                                 >
                                     <div className="flex items-start gap-3">
                                         <span className="text-2xl">{thread.topic?.icon || '💬'}</span>
                                         <div className="flex-1">
-                                            <h3 className="font-semibold text-gray-900 line-clamp-2">{thread.title}</h3>
-                                            <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                                            <h3 className="font-semibold text-slate-900 line-clamp-2">{thread.title}</h3>
+                                            <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
                                                 <span>{thread.topic?.title}</span>
                                                 <span>⬆️ {thread.upvote_count}</span>
                                                 <span>💬 {thread.comment_count}</span>
@@ -142,17 +142,17 @@ export default async function UserProfilePage({ params }: { params: { username: 
                     {/* Sidebar */}
                     <div className="space-y-6">
                         {/* Member info */}
-                        <div className="bg-white rounded-xl border border-gray-200 p-5">
-                            <h3 className="font-semibold text-gray-900 mb-4">Member Info</h3>
+                        <div className="surface p-5">
+                            <h3 className="font-semibold text-slate-900 mb-4">Member Info</h3>
                             <div className="space-y-3 text-sm">
                                 <div className="flex justify-between">
-                                    <span className="text-gray-500">Joined</span>
-                                    <span className="text-gray-900">{formatDate(profile.created_at)}</span>
+                                    <span className="text-slate-500">Joined</span>
+                                    <span className="text-slate-900">{formatDate(profile.created_at)}</span>
                                 </div>
                                 {profile.is_premium && (
                                     <div className="flex justify-between">
-                                        <span className="text-gray-500">Membership</span>
-                                        <span className="text-amber-600 font-medium capitalize">{profile.premium_tier || 'Premium'}</span>
+                                        <span className="text-slate-500">Membership</span>
+                                        <span className="text-amber-700 font-medium capitalize">{profile.premium_tier || 'Premium'}</span>
                                     </div>
                                 )}
                             </div>
@@ -160,17 +160,17 @@ export default async function UserProfilePage({ params }: { params: { username: 
 
                         {/* Recent Comments */}
                         {comments.length > 0 && (
-                            <div className="bg-white rounded-xl border border-gray-200 p-5">
-                                <h3 className="font-semibold text-gray-900 mb-4">Recent Comments</h3>
+                            <div className="surface p-5">
+                                <h3 className="font-semibold text-slate-900 mb-4">Recent Comments</h3>
                                 <div className="space-y-3">
                                     {comments.map((comment: any) => (
                                         <Link
                                             key={comment.id}
                                             href={`/thread/${comment.thread?.id}`}
-                                            className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                                            className="block p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition"
                                         >
-                                            <p className="text-sm text-gray-700 line-clamp-2">{comment.content}</p>
-                                            <p className="text-xs text-gray-400 mt-1">in {comment.thread?.title}</p>
+                                            <p className="text-sm text-slate-700 line-clamp-2">{comment.content}</p>
+                                            <p className="text-xs text-slate-400 mt-1">in {comment.thread?.title}</p>
                                         </Link>
                                     ))}
                                 </div>

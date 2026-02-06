@@ -65,3 +65,57 @@ body {
 .animate-fade-up-3 {
   animation: fade-up 1s ease-out 0.2s both;
 }
+
+@layer components {
+  .surface {
+    @apply bg-white/80 border border-slate-200 rounded-2xl shadow-sm backdrop-blur;
+  }
+
+  .surface-strong {
+    @apply bg-white border border-slate-200 rounded-2xl shadow-lg shadow-slate-900/10;
+  }
+
+  .card-hover {
+    @apply transition-all hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-2xl font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 transition shadow-lg shadow-teal-500/25 hover:-translate-y-0.5;
+  }
+
+  .btn-primary-sm {
+    @apply px-4 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 transition shadow-md shadow-teal-500/20 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 rounded-2xl font-semibold bg-white/80 border border-slate-200 text-slate-700 hover:border-teal-300 hover:text-teal-700 transition hover:-translate-y-0.5;
+  }
+
+  .btn-ghost {
+    @apply text-slate-600 hover:text-slate-900 transition;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white/80;
+  }
+
+  .textarea {
+    @apply w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white/80 resize-none;
+  }
+
+  .badge {
+    @apply px-2 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-teal {
+    @apply bg-teal-50 text-teal-700;
+  }
+
+  .badge-orange {
+    @apply bg-orange-50 text-orange-700;
+  }
+
+  .badge-ink {
+    @apply bg-slate-100 text-slate-700;
+  }
+}
